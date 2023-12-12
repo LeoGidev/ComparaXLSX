@@ -6,16 +6,28 @@ from tkinter import *
 from tkinter import filedialog
 
 #funcion que busca archivo
-def buscador():
+def buscador1():
     archivo = filedialog.askopenfilename(initialdir = "/",
                                           title = "Elija un archivo",
                                           filetypes = (("Hoja de Excel",
-                                                        "*.xlsx*"),
+                                                        "*.xls*"),
                                                        ("all files",
                                                         "*.*")))
-      
     # Cambiamos el texto
-    label_file_explorer.configure(text="Archivo abierto: "+archivo)
+    cuadroruta.configure(text="Archivo abierto: "+archivo)
+    #abrimos excel
+    hoja1 = pd.read_excel(archivo)
+
+def buscador2():
+    archivo2 = filedialog.askopenfilename(initialdir = "/",
+                                          title = "Elija un archivo",
+                                          filetypes = (("Hoja de Excel",
+                                                        "*.xls*"),
+                                                       ("all files",
+                                                        "*.*")))    
+    hoja2 = pd.read_excel(archivo2)
+    # Cambiamos el texto
+    cuadroruta2.configure(text="Archivo abierto: "+archivo2)
 
 
 # se crea la ventana
@@ -31,22 +43,34 @@ ventana.geometry("800x500")
 ventana.config(background = "white")
   
 # se hace ek lavel que donde se pondrá la ruta
-label_file_explorer = Label(ventana,
+cuadroruta = Label(ventana,
                             text = "Explorador usando tkinter",
                             width = 100, height = 4,
-                            fg = "blue")
+                            fg = "red")
   
       
-button_explore = Button(ventana,text = "Abrir",command = buscador)
+boton1 = Button(ventana,text = "Abrir",command = buscador1)
   
-button_exit = Button(ventana, text = "Salir", command = exit)
+botonsalir = Button(ventana, text = "Salir", command = exit)
+# se hace ek lavel que donde se pondrá la ruta
+cuadroruta2 = Label(ventana,
+                            text = "Explorador usando tkinter",
+                            width = 100, height = 4,
+                            fg = "red")
+  
+      
+boton2 = Button(ventana,text = "Abrir",command = buscador2)
+  
+
 
 #se ubican las cosas por medio de la grilla
-label_file_explorer.grid(column = 1, row = 1)
+cuadroruta.grid(column = 1, row = 1)
+cuadroruta2.grid(column = 1, row = 2)
   
-button_explore.grid(column = 1, row = 2)
+boton1.grid(column = 1, row = 3)
+boton2.grid(column = 1, row = 4)
   
-button_exit.grid(column = 1,row = 3)
+botonsalir.grid(column = 1,row = 5)
   
 
 ventana.mainloop()
