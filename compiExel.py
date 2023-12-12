@@ -13,45 +13,53 @@ soloB =[]
 
 #funcion que busca archivo
 def buscador1():
-    global dato1
-    dato1=""
-    archivo = filedialog.askopenfilename(initialdir = "/",
+    try:
+        global dato1
+        dato1=""
+        archivo = filedialog.askopenfilename(initialdir = "/",
                                           title = "Elija un archivo",
                                           filetypes = (("Hoja de Excel",
                                                         "*.xls*"),
                                                        ("all files",
                                                         "*.*")))
-    #Se obtiene lo que diga el texto
-    result=texto.get("1.0","end")
-    resultado= result.strip("\n") #se borra la letra /n que se toma automaticamente al tomar el texto
+        #Se obtiene lo que diga el texto
+        result=texto.get("1.0","end")
+        resultado= result.strip("\n") #se borra la letra /n que se toma automaticamente al tomar el texto
 
-    # Cambiamos el texto
-    cuadromensaje.configure(text="Archivo abierto: "+archivo)
-    #abrimos excel
-    hoja1 = pd.read_excel(archivo)
+        # Cambiamos el texto
+        cuadromensaje.configure(text="Archivo abierto: "+archivo)
+        #abrimos excel
+        hoja1 = pd.read_excel(archivo)
     
-    dato1 = hoja1[resultado]
+        dato1 = hoja1[resultado]
+    except:
+        
+        cuadromensaje.configure(text="Error cargue el archivo luego de ingresar el nombre de una columna válida ")
     
     
     
     
 
 def buscador2():
-    global dato2
-    dato2=""
-    archivo2 = filedialog.askopenfilename(initialdir = "/",
+    try:
+        global dato2
+        dato2=""
+        archivo2 = filedialog.askopenfilename(initialdir = "/",
                                           title = "Elija un archivo",
                                           filetypes = (("Hoja de Excel",
                                                         "*.xls*"),
                                                        ("all files",
                                                         "*.*"))) 
-    result2 = texto2.get("1.0","end")   
-    resultado2 = result2.strip('\n')
-    # Cambiamos el texto
-    cuadromensaje.configure(text="Archivo abierto: "+archivo2)
-    hoja2 = pd.read_excel(archivo2)
+        result2 = texto2.get("1.0","end")   
+        resultado2 = result2.strip('\n')
+        # Cambiamos el texto
+        cuadromensaje.configure(text="Archivo abierto: "+archivo2)
+        hoja2 = pd.read_excel(archivo2)
     
-    dato2 = hoja2[resultado2]
+        dato2 = hoja2[resultado2]
+    except:
+        
+        cuadromensaje.configure(text="Error cargue el archivo luego de ingresar el nombre de una columna válida ")
     
     
 
@@ -59,6 +67,7 @@ def buscador2():
 def comparar():
     coin=0
     coinb=0
+    ResultadoGeneral.configure(text="Listo!")
     
     
     for n in list(dato1):
@@ -156,11 +165,7 @@ boton3 = Button(ventana, text = "comparar", command = comparar).grid(pady=10, pa
 
 ResultadoGeneral = LabelFrame(ventana, text="Resultados", padx=20, pady=20)
 ResultadoGeneral.grid(pady=10, padx=10,row=3,column=0,columnspan=3,sticky=S+N+E+W) #Se le da unos márgenes en la ventana root
-Label(ResultadoGeneral, 
-            text=f"Resultados:",
-            background="white",
-            width=27
-            ).pack()
+
 
 
   
