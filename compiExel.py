@@ -87,6 +87,23 @@ def comparar():
     print(iguales)
     print("solo A: ", soloA)
     print("solo B: ", soloB)
+    
+    Label(ResultadoGeneral, 
+            text=f"Datos Repetidos {iguales}",
+            background="skyblue",
+           
+            ).pack()
+    
+    Label(ResultadoGeneral, 
+            text=f"Datos unicos en A {soloA}",
+            background="skyblue",
+            
+            ).pack()
+    Label(ResultadoGeneral, 
+            text=f"Datos Uunicos en B {soloB}",
+            background="skyblue",
+            
+            ).pack()
 
 
 
@@ -115,10 +132,10 @@ ventana.rowconfigure(3, weight=1)
   
 # se hace el lavel que donde se pondrá la ruta
 cuadromensaje = Label(ventana, text = "Bienvenido", width = 10, height = 4, fg = "red")
-cuadromensaje.grid(pady=10, padx=10,row=8,column=0,columnspan=3,sticky=S+N+E+W)
+cuadromensaje.grid(pady=10, padx=10,row=9,column=0,columnspan=3,sticky=S+N+E+W)
 
  #archivo 1 
-Label(ventana, text="Ingrese el nombre de la columna del primer archivo").grid(row=0, column=0, pady=10, padx=10)
+Label(ventana, text="Ingrese el nombre de la columna del primer archivo", background="white").grid(row=0, column=0, pady=10, padx=10)
 
 texto=Text(ventana, height=1, width=10)
 texto.grid(row=0, column=1, sticky=W, pady=10, padx=10)
@@ -126,7 +143,7 @@ texto.grid(row=0, column=1, sticky=W, pady=10, padx=10)
 boton1 = Button(ventana,text = "Abrir",command = buscador1).grid(row = 0, column= 2,sticky=W, pady=10, padx=10)
 
 #archivo 2
-Label(ventana, text="Ingrese el nombre de la columna del segundo archivo:").grid(row=1, column=0, pady=10, padx=10)   
+Label(ventana, text="Ingrese el nombre de la columna del segundo archivo:",background="white").grid(row=1, column=0, pady=10, padx=10)   
 texto2=Text(ventana, height=1, width=10)
 texto2.grid(row=1, column=1, sticky=W, pady=10, padx=10)
 boton2 = Button(ventana,text = "Abrir",command = buscador2).grid(row = 1, column=2, sticky=W, pady=10, padx=10)
@@ -137,8 +154,13 @@ boton3 = Button(ventana, text = "comparar", command = comparar).grid(pady=10, pa
 #botonsalir = Button(ventana, text = "Salir", command = exit).grid(pady=10, padx=10,row=6,column=0,columnspan=3,sticky=S+N+E+W)
 
 
-
-
+ResultadoGeneral = LabelFrame(ventana, text="Resultados", padx=20, pady=20)
+ResultadoGeneral.grid(pady=10, padx=10,row=3,column=0,columnspan=3,sticky=S+N+E+W) #Se le da unos márgenes en la ventana root
+Label(ResultadoGeneral, 
+            text=f"Resultados:",
+            background="white",
+            width=27
+            ).pack()
 
 
   
