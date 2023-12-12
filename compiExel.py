@@ -27,7 +27,9 @@ def buscador1():
     cuadroruta.configure(text="Archivo abierto: "+archivo)
     #abrimos excel
     hoja1 = pd.read_excel(archivo)
+    global dato1
     dato1 = hoja1[resultado]
+    
     print(dato1)
     
     
@@ -44,20 +46,46 @@ def buscador2():
     # Cambiamos el texto
     cuadroruta2.configure(text="Archivo abierto: "+archivo2)
     hoja2 = pd.read_excel(archivo2)
+    global dato2
     dato2 = hoja2[resultado2]
     print(dato2)
     
 
 #función que compara los dos bloques
 def comparar():
+    coin=0
+    coinb=0
+    print("comaprando...")
+    print(dato1)
+    print(dato2)
     
-    datosA=list(dato1)
-    datosB=list(dato2)
-    for n in datosA:
-        for n2 in datosB:
+    for n in list(dato1):
+        print("buscando coincidencias")
+        for n2 in list(dato2):
+            print(n)
+            print(n2)
             if n == n2:
+                
                 iguales.append(n2)
-            
+                coin=1
+        if coin == 0:
+            soloA.append(n)
+        else: 
+            coin = 0
+    for nb in list(dato2):
+        for nb2 in list(dato1):
+            if nb == nb2:
+                coinb=1
+            else:
+                coinb == 0
+        if coinb == 0:
+            soloB.append(nb)
+    
+    print("Iguales:")
+    print(iguales)
+    print("solo A: ", soloA)
+    print("solo B: ", soloB)
+
 
 
 
@@ -100,19 +128,22 @@ cuadroruta2 = Label(ventana,
   
       
 boton2 = Button(ventana,text = "Abrir",command = buscador2)
+
+boton3 = Button(ventana, text = "comparar", command = comparar)
   
 
 
 #se ubican las cosas por medio de la grilla
 cuadroruta.grid(column = 1, row = 1)
 cuadroruta2.grid(column = 1, row = 2)
-texto.grid(column=2,row=2)
+texto.grid(column=2,row=3)
 texto2.grid(column=2,row=4)
   
 boton1.grid(column = 1, row = 3)
 boton2.grid(column = 1, row = 4)
+boton3.grid(column=1, row= 5)
   
-botonsalir.grid(column = 1,row = 5)
+botonsalir.grid(column = 1,row = 6)
   
 
 ventana.mainloop()
