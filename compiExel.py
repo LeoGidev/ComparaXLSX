@@ -5,6 +5,12 @@ from pandas import ExcelWriter
 from tkinter import *
 from tkinter import filedialog
 
+dato1=''
+dato2=''
+iguales = []
+soloA =[]
+soloB =[]
+
 #funcion que busca archivo
 def buscador1():
     archivo = filedialog.askopenfilename(initialdir = "/",
@@ -24,6 +30,7 @@ def buscador1():
     dato1 = hoja1[resultado]
     print(dato1)
     
+    
 
 def buscador2():
     archivo2 = filedialog.askopenfilename(initialdir = "/",
@@ -39,8 +46,22 @@ def buscador2():
     hoja2 = pd.read_excel(archivo2)
     dato2 = hoja2[resultado2]
     print(dato2)
-
     
+
+#función que compara los dos bloques
+def comparar():
+    
+    datosA=list(dato1)
+    datosB=list(dato2)
+    for n in datosA:
+        for n2 in datosB:
+            if n == n2:
+                iguales.append(n2)
+            
+
+
+
+
 
 
 # se crea la ventana
