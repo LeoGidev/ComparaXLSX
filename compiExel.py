@@ -15,11 +15,14 @@ def buscador1():
                                                         "*.*")))
     #Se obtiene lo que diga el texto
     result=texto.get("1.0","end")
-    print(result)
+    resultado= result.strip("\n") #se borra la letra /n que se toma automaticamente al tomar el texto
+
     # Cambiamos el texto
     cuadroruta.configure(text="Archivo abierto: "+archivo)
     #abrimos excel
     hoja1 = pd.read_excel(archivo)
+    dato1 = hoja1[resultado]
+    print(dato1)
     
 
 def buscador2():
@@ -28,11 +31,14 @@ def buscador2():
                                           filetypes = (("Hoja de Excel",
                                                         "*.xls*"),
                                                        ("all files",
-                                                        "*.*")))    
+                                                        "*.*"))) 
+    result2 = texto2.get("1.0","end")   
+    resultado2 = result2.strip('\n')
     # Cambiamos el texto
     cuadroruta2.configure(text="Archivo abierto: "+archivo2)
     hoja2 = pd.read_excel(archivo2)
-    
+    dato2 = hoja2[resultado2]
+    print(dato2)
 
     
 
