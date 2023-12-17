@@ -4,7 +4,7 @@
 <ul>
 <li>Casos coincidentes</li>
 <li>Casos que esten en A pero no en B</li>
-<li>Casos que esten en B pero no en A<li>
+<li>Casos que esten en B pero no en A</li>
 </ul>
 
 <img src="compi.png">
