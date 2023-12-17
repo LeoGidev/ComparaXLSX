@@ -7,4 +7,4 @@
 <li>Casos que esten en B pero no en A<li>
 </ul>
 
-<img src="Compi.png">
+<img src="compi.png">
