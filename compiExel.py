@@ -9,7 +9,7 @@ class ComparadorApp:
         self.root.title('Comparador de Archivos')
         self.root.geometry("500x500")
         self.root.config(background="white")
-        
+        self.root.set_theme('equilux')  
         self.root.columnconfigure(0, weight=0)
         self.root.columnconfigure(1, weight=1)
         self.root.rowconfigure(3, weight=1)
@@ -126,6 +126,6 @@ class ComparadorApp:
                                     background="skyblue").pack()
 
 if __name__ == "__main__":
-    root = Tk()
+    root = ThemedTk(theme="equilux")
     app = ComparadorApp(root)
     root.mainloop()
