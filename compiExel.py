@@ -11,6 +11,31 @@ iguales = []
 soloA =[]
 soloB =[]
 
+class AppFacebook(tk.Tk):
+    def __init__(self):
+        super().__init__()
+
+        # Configuración de la ventana principal
+        self.title("Compi Excel")
+        self.geometry("600x400")  # Ajusta las dimensiones según tus necesidades
+
+        # Configuración del icono
+        #self.iconbitmap("nombre_del_icono.ico")  # Reemplaza con la ruta de tu icono
+
+        # Barra de navegación superior
+        self.nav_bar = tk.Frame(self, bg="#3b5998", height=50)
+        self.nav_bar.pack(fill=tk.X)
+
+        # Contenido principal
+        self.main_content = tk.Frame(self, bg="#ffffff")
+        self.main_content.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
+
+        # Botones de la barra de navegación
+        self.create_nav_buttons()
+
+        # Campo de "¿Qué estás pensando?"
+        self.create_status_entry()
+
 #funcion que busca archivo
 def buscador1():
     try:
