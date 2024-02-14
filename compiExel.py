@@ -112,7 +112,7 @@ class ComparadorApp:
 
         cuadromensaje_iguales = Label(self.ResultadoGeneral,
                                       text=f"Datos Repetidos {self.iguales}",
-                                      background=self.root.cget("bg"),
+                                      background="#414141",
                                       foreground="white").pack()
 
         cuadromensaje_soloA = Label(self.ResultadoGeneral,
