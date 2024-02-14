@@ -59,7 +59,7 @@ class ComparadorApp:
             hoja1 = pd.read_excel(archivo)
             self.dato1 = hoja1[resultado]
         except Exception as e:
-            cuadromensaje = Label(self.ResultadoGeneral, text="Error: " + str(e))
+            cuadromensaje = Label(self.ResultadoGeneral, text="Error: " + str(e), background="#414141",foreground="white")
             cuadromensaje.pack()
 
     def buscador2(self):
@@ -70,13 +70,13 @@ class ComparadorApp:
                                                              ("all files", "*.*")))
             result2 = self.texto2.get("1.0", "end")
             resultado2 = result2.strip('\n')
-            cuadromensaje = Label(self.ResultadoGeneral, text="Archivo abierto: " + archivo2)
+            cuadromensaje = Label(self.ResultadoGeneral, text="Archivo abierto: " + archivo2, background="#414141",foreground="white")
             cuadromensaje.pack()
             
             hoja2 = pd.read_excel(archivo2)
             self.dato2 = hoja2[resultado2]
         except Exception as e:
-            cuadromensaje = Label(self.ResultadoGeneral, text="Error: " + str(e),
+            cuadromensaje = Label(self.ResultadoGeneral, text="Error: " + str(e),background="#414141", foreground="white"
 )
             cuadromensaje.pack()
 
@@ -87,7 +87,7 @@ class ComparadorApp:
         self.soloA = []
         self.soloB = []
 
-        cuadromensaje = Label(self.ResultadoGeneral, text="Listo!",
+        cuadromensaje = Label(self.ResultadoGeneral, text="Listo!",background="#414141", foreground="white"
                               )
         cuadromensaje.pack()
 
@@ -117,13 +117,13 @@ class ComparadorApp:
 
         cuadromensaje_soloA = Label(self.ResultadoGeneral,
                                     text=f"Datos únicos en A {self.soloA}",
-                                    background=self.root.cget("bg"),
-                                    foreground="white").pack()
+                                    background="#414141",
+                                      foreground="white").pack()
 
         cuadromensaje_soloB = Label(self.ResultadoGeneral,
                                     text=f"Datos únicos en B {self.soloB}",
-                                    background=self.root.cget("bg"),
-                                    foreground="white").pack()
+                                    background="#414141",
+                                      foreground="white").pack()
 
 if __name__ == "__main__":
     root = ThemedTk(theme="equilux")
