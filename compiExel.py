@@ -1,7 +1,7 @@
 import pandas as pd
 from tkinter import Tk, Label, Text, Button, filedialog, Frame, ttk
 from ttkthemes import ThemedTk
-
+from pandas import ExcelWriter
 
 class ComparadorApp:
     def __init__(self, root):
@@ -41,8 +41,7 @@ class ComparadorApp:
                                                                          sticky='snew')
         ttk.Button(self.root, text="Exportar", command=self.exportar).grid(row=4, column=0, columnspan=3, pady=10, padx=10,
                                                                          sticky='snew')
-    def exportar(self):
-        print("hola")
+   
 
     def create_result_frame(self):
         self.ResultadoGeneral = ttk.LabelFrame(self.root, text="Resultados", padding=(20, 20))
@@ -128,6 +127,13 @@ class ComparadorApp:
                                     text=f"Datos únicos en B {self.soloB}",
                                     background="#414141",
                                       foreground="white").pack()
+    
+    def exportar(self):
+        coincidentes = pd.DataFrame(self.iguales, columns = ['Coincidencias'])
+        writer = ExcelWriter('Resultado.xlsx')
+        coincidentes.to_excel(writer, 'Resultado', index=False)
+        #writer.save()
+        print("hola")
 
 if __name__ == "__main__":
     root = ThemedTk(theme="equilux")
