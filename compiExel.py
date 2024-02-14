@@ -28,11 +28,13 @@ class ComparadorApp:
             row=0, column=0, pady=10, padx=10)
         self.texto = Text(self.root, height=1, width=10)
         self.texto.grid(row=0, column=1, sticky='w', pady=10, padx=10)
+        self.texto.bind('<KeyRelease>', self.check_entries)
 
         Label(self.root, text="Ingrese el nombre de la columna del segundo archivo:").grid(
             row=1, column=0, pady=10, padx=10)
         self.texto2 = Text(self.root, height=1, width=10)
         self.texto2.grid(row=1, column=1, sticky='w', pady=10, padx=10)
+        self.texto.bind('<KeyRelease>', self.check_entries)
 
     def create_buttons(self):
         ttk.Button(self.root, text="Abrir", command=self.buscador1).grid(row=0, column=2, sticky='w', pady=10, padx=10)
