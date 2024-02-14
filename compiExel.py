@@ -53,15 +53,13 @@ class ComparadorApp:
 
             result = self.texto.get("1.0", "end")
             resultado = result.strip("\n")
-            cuadromensaje = Label(self.ResultadoGeneral, text="Archivo abierto: " + archivo,
-                                  background="skyblue")
+            cuadromensaje = Label(self.ResultadoGeneral, text="Archivo abierto: " + archivo)
             cuadromensaje.pack()
             
             hoja1 = pd.read_excel(archivo)
             self.dato1 = hoja1[resultado]
         except Exception as e:
-            cuadromensaje = Label(self.ResultadoGeneral, text="Error: " + str(e),
-                                  background="skyblue")
+            cuadromensaje = Label(self.ResultadoGeneral, text="Error: " + str(e))
             cuadromensaje.pack()
 
     def buscador2(self):
