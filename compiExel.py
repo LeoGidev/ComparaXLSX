@@ -53,7 +53,7 @@ class ComparadorApp:
 
             result = self.texto.get("1.0", "end")
             resultado = result.strip("\n")
-            cuadromensaje = Label(self.ResultadoGeneral, text="Archivo abierto: " + archivo)
+            cuadromensaje = Label(self.ResultadoGeneral, text="Archivo abierto: " + archivo, background="#414141",foreground="white")
             cuadromensaje.pack()
             
             hoja1 = pd.read_excel(archivo)
