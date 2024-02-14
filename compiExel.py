@@ -144,6 +144,8 @@ class ComparadorApp:
                                     text=f"Datos únicos en B {self.soloB}",
                                     background="#414141",
                                       foreground="white").pack()
+        self.btn4['state'] = 'normal'
+        #self.root.nametowidget(self.root.grid_slaves(row=2, column=0)[0]).config(state='normal')
     
     
 
