@@ -39,6 +39,10 @@ class ComparadorApp:
         ttk.Button(self.root, text="Abrir", command=self.buscador2).grid(row=1, column=2, sticky='w', pady=10, padx=10)
         ttk.Button(self.root, text="Comparar", command=self.comparar).grid(row=2, column=0, columnspan=3, pady=10, padx=10,
                                                                          sticky='snew')
+        ttk.Button(self.root, text="Exportar", command=self.exportar).grid(row=4, column=0, columnspan=3, pady=10, padx=10,
+                                                                         sticky='snew')
+    def exportar(self):
+        print("hola")
 
     def create_result_frame(self):
         self.ResultadoGeneral = ttk.LabelFrame(self.root, text="Resultados", padding=(20, 20))
