@@ -34,16 +34,31 @@ class ComparadorApp:
             row=1, column=0, pady=10, padx=10)
         self.texto2 = Text(self.root, height=1, width=10)
         self.texto2.grid(row=1, column=1, sticky='w', pady=10, padx=10)
-        self.texto.bind('<KeyRelease>', self.check_entries)
+        self.texto2.bind('<KeyRelease>', self.check_entries)
 
     def create_buttons(self):
-        ttk.Button(self.root, text="Abrir", command=self.buscador1).grid(row=0, column=2, sticky='w', pady=10, padx=10)
-        ttk.Button(self.root, text="Abrir", command=self.buscador2).grid(row=1, column=2, sticky='w', pady=10, padx=10)
-        ttk.Button(self.root, text="Comparar", command=self.comparar).grid(row=2, column=0, columnspan=3, pady=10, padx=10,
-                                                                         sticky='snew')
-        ttk.Button(self.root, text="Exportar", command=self.exportar).grid(row=4, column=0, columnspan=3, pady=10, padx=10,
-                                                                         sticky='snew')
-   
+        self.btn1 = ttk.Button(self.root, text="Abrir", command=self.buscador1, state='disabled')
+        self.btn1.grid(row=0, column=2, sticky='w', pady=10, padx=10)
+
+        self.btn2 = ttk.Button(self.root, text="Abrir", command=self.buscador2, state='disabled')
+        self.btn2.grid(row=1, column=2, sticky='w', pady=10, padx=10)
+
+        ttk.Button(self.root, text="Comparar", command=self.comparar, state='disabled').grid(
+            row=2, column=0, columnspan=3, pady=10, padx=10, sticky='snew')
+        self.btn4=ttk.Button(self.root, text="Exportar", command=self.exportar, state="disabled")
+        self.btn4.grid(row=4, column=0, columnspan=3, pady=10, padx=10, sticky='snew')
+    def check_entries(self, event):
+            # Verificar si ambos campos de entrada tienen contenido y habilitar los botones en consecuencia
+            if self.texto.get("1.0", "end-1c") and self.texto2.get("1.0", "end-1c"):
+                self.btn1['state'] = 'normal'
+                self.btn2['state'] = 'normal'
+                self.root.nametowidget(self.root.grid_slaves(row=2, column=0)[0]).config(state='normal')
+                print("habilitar")
+            else:
+                print("desahbilitados")
+                self.btn1['state'] = 'disabled'
+                self.btn2['state'] = 'disabled'
+                self.root.nametowidget(self.root.grid_slaves(row=2, column=0)[0]).config(state='disabled')
 
     def create_result_frame(self):
         self.ResultadoGeneral = ttk.LabelFrame(self.root, text="Resultados", padding=(20, 20))
