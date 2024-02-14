@@ -128,12 +128,25 @@ class ComparadorApp:
                                     background="#414141",
                                       foreground="white").pack()
     
+    
+
     def exportar(self):
-        coincidentes = pd.DataFrame(self.iguales, columns = ['Coincidencias'])
-        writer = ExcelWriter('C://Users//Work//Desktop//Resultado.xlsx')
-        coincidentes.to_excel(writer, 'Resultado', index=False)
-        writer.save()
-        print("hola")
+        # Crear DataFrames para cada lista
+        coincidentes = pd.DataFrame(self.iguales, columns=['Coincidencias'])
+        soloA_df = pd.DataFrame(self.soloA, columns=['soloA'])
+        soloB_df = pd.DataFrame(self.soloB, columns=['soloB'])
+        
+        # Unir los DataFrames en uno solo
+        resultado_df = pd.concat([coincidentes, soloA_df, soloB_df], axis=1)
+        
+        # Ruta
+        ruta_archivo = 'C:\\Users\\Work\\Desktop\\Resultado.xlsx'
+
+        # Crear un objeto ExcelWriter
+        with ExcelWriter(ruta_archivo, engine='openpyxl') as writer:
+            # Guardar el DataFrame en una hoja llamada 'Resultado'
+            resultado_df.to_excel(writer, sheet_name='Resultado', index=False)
+
 
 if __name__ == "__main__":
     root = ThemedTk(theme="equilux")
