@@ -130,9 +130,9 @@ class ComparadorApp:
     
     def exportar(self):
         coincidentes = pd.DataFrame(self.iguales, columns = ['Coincidencias'])
-        writer = ExcelWriter('Resultado.xlsx')
+        writer = ExcelWriter('C://Users//Work//Desktop//Resultado.xlsx')
         coincidentes.to_excel(writer, 'Resultado', index=False)
-        #writer.save()
+        writer.save()
         print("hola")
 
 if __name__ == "__main__":
