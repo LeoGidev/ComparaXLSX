@@ -2,6 +2,7 @@ import pandas as pd
 from tkinter import Tk, Label, Text, Button, filedialog, Frame, ttk
 from ttkthemes import ThemedTk
 from pandas import ExcelWriter
+import os
 
 class ComparadorApp:
     def __init__(self, root):
@@ -150,22 +151,32 @@ class ComparadorApp:
     
 
     def exportar(self):
-        # Crear DataFrames para cada lista
-        coincidentes = pd.DataFrame(self.iguales, columns=['Coincidencias'])
-        soloA_df = pd.DataFrame(self.soloA, columns=['soloA'])
-        soloB_df = pd.DataFrame(self.soloB, columns=['soloB'])
-        
-        # Unir los DataFrames en uno solo
-        resultado_df = pd.concat([coincidentes, soloA_df, soloB_df], axis=1)
-        
-        # Ruta
-        ruta_archivo = 'C:\\Users\\Work\\Desktop\\Resultado.xlsx'
+        try:
+            # Crear DataFrames para cada lista
+            coincidentes = pd.DataFrame(self.iguales, columns=['Coincidencias'])
+            soloA_df = pd.DataFrame(self.soloA, columns=['soloA'])
+            soloB_df = pd.DataFrame(self.soloB, columns=['soloB'])
+            
+            # Unir los DataFrames en uno solo
+            resultado_df = pd.concat([coincidentes, soloA_df, soloB_df], axis=1)
+            
+            # Ruta
+            ruta_archivo = 'C:\\Users\\Work\\Desktop\\Resultado.xlsx'
 
-        # Crear un objeto ExcelWriter
-        with ExcelWriter(ruta_archivo, engine='openpyxl') as writer:
-            # Guardar el DataFrame en una hoja llamada 'Resultado'
-            resultado_df.to_excel(writer, sheet_name='Resultado', index=False)
+            # Crear un objeto ExcelWriter
+            with ExcelWriter(ruta_archivo, engine='openpyxl') as writer:
+                # Guardar el DataFrame en una hoja llamada 'Resultado'
+                resultado_df.to_excel(writer, sheet_name='Resultado', index=False)
 
+            cuadromensaje = Label(self.ResultadoGeneral, text="Exportado Correctamente"+ ruta_archivo, background="#414141",foreground="white")
+            cuadromensaje.pack()
+        except:
+            cuadromensaje = Label(self.ResultadoGeneral, text="Error al Exportar!", background="#414141",foreground="white")
+            cuadromensaje.pack()
+
+    def abrir_carpeta(self, event):
+        carpeta_descargas = os.path.join(os.path.expanduser("~"), "Downloads")
+        os.startfile(carpeta_descargas)
 
 if __name__ == "__main__":
     root = ThemedTk(theme="equilux")
