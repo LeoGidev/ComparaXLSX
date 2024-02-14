@@ -1,5 +1,7 @@
 import pandas as pd
 from tkinter import Tk, Label, Text, Button, filedialog, Frame, ttk
+from ttkthemes import ThemedTk
+
 
 class ComparadorApp:
     def __init__(self, root):
@@ -7,7 +9,7 @@ class ComparadorApp:
         self.root.title('Comparador de Archivos')
         self.root.geometry("500x500")
         self.root.config(background="white")
-
+        
         self.root.columnconfigure(0, weight=0)
         self.root.columnconfigure(1, weight=1)
         self.root.rowconfigure(3, weight=1)
