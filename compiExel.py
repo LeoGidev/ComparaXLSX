@@ -8,7 +8,7 @@ class ComparadorApp:
         self.root = root
         self.root.title('Comparador de Archivos')
         self.root.geometry("500x500")
-        self.root.config(background="white")
+        #self.root.config(background="white")
         self.root.set_theme('equilux')  
         self.root.columnconfigure(0, weight=0)
         self.root.columnconfigure(1, weight=1)
@@ -24,12 +24,12 @@ class ComparadorApp:
         self.create_result_frame()
 
     def create_labels_and_entries(self):
-        Label(self.root, text="Ingrese el nombre de la columna del primer archivo", background="white").grid(
+        Label(self.root, text="Ingrese el nombre de la columna del primer archivo").grid(
             row=0, column=0, pady=10, padx=10)
         self.texto = Text(self.root, height=1, width=10)
         self.texto.grid(row=0, column=1, sticky='w', pady=10, padx=10)
 
-        Label(self.root, text="Ingrese el nombre de la columna del segundo archivo:", background="white").grid(
+        Label(self.root, text="Ingrese el nombre de la columna del segundo archivo:").grid(
             row=1, column=0, pady=10, padx=10)
         self.texto2 = Text(self.root, height=1, width=10)
         self.texto2.grid(row=1, column=1, sticky='w', pady=10, padx=10)
