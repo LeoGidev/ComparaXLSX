@@ -167,8 +167,8 @@ class ComparadorApp:
             with ExcelWriter(ruta_archivo, engine='openpyxl') as writer:
                 # Guardar el DataFrame en una hoja llamada 'Resultado'
                 resultado_df.to_excel(writer, sheet_name='Resultado', index=False)
-
-            cuadromensaje = Label(self.ResultadoGeneral, text="Exportado Correctamente"+ ruta_archivo, background="#414141",foreground="white")
+            
+            cuadromensaje = Label(self.ResultadoGeneral, text="Exportado Correctamente"+ ruta_archivo + "Click aquí para abrir", background="#414141",foreground="#C5FFE2")
             cuadromensaje.pack()
             cuadromensaje.bind("<Button-1>", self.abrir_carpeta)
         except:
