@@ -146,7 +146,7 @@ class ComparadorApp:
                                     background="#414141",
                                       foreground="white").pack()
         self.btn4['state'] = 'normal'
-        #self.root.nametowidget(self.root.grid_slaves(row=2, column=0)[0]).config(state='normal')
+        
     
     
 
@@ -170,12 +170,13 @@ class ComparadorApp:
 
             cuadromensaje = Label(self.ResultadoGeneral, text="Exportado Correctamente"+ ruta_archivo, background="#414141",foreground="white")
             cuadromensaje.pack()
+            cuadromensaje.bind("<Button-1>", self.abrir_carpeta)
         except:
             cuadromensaje = Label(self.ResultadoGeneral, text="Error al Exportar!", background="#414141",foreground="white")
             cuadromensaje.pack()
 
     def abrir_carpeta(self, event):
-        carpeta_descargas = os.path.join(os.path.expanduser("~"), "Downloads")
+        carpeta_descargas = os.path.join(os.path.expanduser("~"), 'C:\\Users\\Work\\Desktop\\Resultado.xlsx')
         os.startfile(carpeta_descargas)
 
 if __name__ == "__main__":
