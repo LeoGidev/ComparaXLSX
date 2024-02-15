@@ -15,7 +15,8 @@ class ComparadorApp:
         self.root.columnconfigure(1, weight=1)
         self.root.rowconfigure(3, weight=1)
         #Configuración del icono
-        self.root.iconbitmap("icon.ico") 
+        self.root.iconbitmap(os.path.abspath("icon.ico"))
+
 
         self.create_widgets()
 
