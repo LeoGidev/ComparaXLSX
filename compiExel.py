@@ -7,7 +7,7 @@ import os
 class ComparadorApp:
     def __init__(self, root):
         self.root = root
-        self.root.title('Comparador de Archivos')
+        self.root.title('Compi App')
         self.root.geometry("600x510")
         #self.root.config(background="white")
         self.root.set_theme('equilux')  
