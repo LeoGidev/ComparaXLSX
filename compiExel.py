@@ -26,7 +26,7 @@ class ComparadorApp:
         self.create_result_frame()
 
     def create_labels_and_entries(self):
-        Label(self.root, text="Ingrese el nombre de la columna del primer archivo").grid(
+        Label(self.root, text="Ingrese el nombre de la columna del primer archivo:").grid(
             row=0, column=0, pady=10, padx=10)
         self.texto = Text(self.root, height=1, width=10)
         self.texto.grid(row=0, column=1, sticky='w', pady=10, padx=10)
@@ -75,13 +75,13 @@ class ComparadorApp:
 
             result = self.texto.get("1.0", "end")
             resultado = result.strip("\n")
-            cuadromensaje = Label(self.ResultadoGeneral, text="Archivo abierto: " + archivo, background="#414141",foreground="white")
+            cuadromensaje = Label(self.ResultadoGeneral, text="Archivo abierto: " + archivo, background="#414141", foreground="white")
             cuadromensaje.pack()
             
             hoja1 = pd.read_excel(archivo)
             self.dato1 = hoja1[resultado]
         except Exception as e:
-            cuadromensaje = Label(self.ResultadoGeneral, text="Error: " + str(e), background="#414141",foreground="white")
+            cuadromensaje = Label(self.ResultadoGeneral, text="Error: " + str(e), background="#414141", foreground="white")
             cuadromensaje.pack()
 
     def buscador2(self):
@@ -92,7 +92,7 @@ class ComparadorApp:
                                                              ("all files", "*.*")))
             result2 = self.texto2.get("1.0", "end")
             resultado2 = result2.strip('\n')
-            cuadromensaje = Label(self.ResultadoGeneral, text="Archivo abierto: " + archivo2, background="#414141",foreground="white")
+            cuadromensaje = Label(self.ResultadoGeneral, text="Archivo abierto: " + archivo2, background="#414141", foreground="white")
             cuadromensaje.pack()
             
             hoja2 = pd.read_excel(archivo2)
